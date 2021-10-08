@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import Home from "./pages/Home";
 import Header from "./components/layout/Header/Header.component";
 import SignUp from "./pages/SignUp";
+import Searched from "./pages/Searched";
 
 function App() {
   return (
@@ -13,7 +14,11 @@ function App() {
           <Home />
         </Route>
 
-        <Route path={"/sign-up"}>
+        <Route exact path={"/search/:query"}>
+          <Searched />
+        </Route>
+
+        <Route exact path={"/sign-up"}>
           <SignUp />
         </Route>
       </Switch>

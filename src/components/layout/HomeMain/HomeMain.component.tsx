@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import LayoutContainerCss from "../LayoutContainer/LayoutContainer.style";
-import { NewsAPIQueryBuilder } from "../../../utils/NewsAPIQueryBuilder";
 import { queryParameters } from "./HomeMain.utils";
 import { Article } from "../../types";
 import ArticleCard from "../../shared/ArticleCard/ArticleCard.component";
 import JSON_EXAMPLE from "../../../json-example";
+import { NewsAPI } from "../../../utils/NewsAPI.query";
+import { Environment } from "../../../utils/Environment";
 
 const Container = styled.main`
   ${LayoutContainerCss}
@@ -33,13 +34,12 @@ const HomeMain = () => {
       setNews(JSON_EXAMPLE.articles);
     };
 
-    const queryBuilder = new NewsAPIQueryBuilder();
+    const queryBuilder = new NewsAPI.QueryBuilder();
     queryBuilder.setQueryParameters(queryParameters);
     const url = queryBuilder.getUrl();
 
     try {
-      //fetchNews(url);
-      fetchFake();
+      Environment.isDebug() ? fetchFake() : fetchNews(url);
     } catch (e) {
       console.error(e);
     }
