@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import ThemeScheme from "../../themes/scheme";
+
+type ContainerProps = {
+  theme: ThemeScheme;
+};
 
 export const Container = styled.a`
   display: flex;
   flex-direction: column;
 
   padding: 10px 15px;
-  background-color: #f1f1f1;
+  background-color: ${({ theme }: ContainerProps) => theme.colors.primary};
 `;
 
 export const ImageWrapper = styled.div`
@@ -21,8 +26,11 @@ export const Image = styled.img`
 export const Title = styled.h3`
   font-size: 1.5rem;
   line-height: 1.1em;
+  margin-bottom: 1.5em;
 `;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+  margin-bottom: 1.5em;
+`;
 
 export const Footer = styled.div``;

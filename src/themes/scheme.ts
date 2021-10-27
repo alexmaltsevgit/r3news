@@ -1,7 +1,7 @@
 type ThemeScheme = {
   colors: {
     primary: string;
-    text: string;
+    secondary: string;
     blue: string;
     red: string;
     green: string;

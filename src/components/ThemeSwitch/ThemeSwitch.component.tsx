@@ -2,24 +2,48 @@ import React, { useState } from "react";
 import Switch from "react-switch";
 import { ThemeActionType } from "../../store/theme/theme.actions";
 import Theme from "../../types/Theme";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
+import { Cookies } from "../../types/Cookies";
+import { Sun } from "../../assets/images/Sun";
+import { Moon } from "../../assets/images/Moon";
+import { AppState } from "../../types/AppState";
 
 const ThemeSwitch = () => {
-  const [checked, setChecked] = useState(false);
+  const [cookies, setCookies] = useCookies([Cookies.Theme]);
+  const [checked, setChecked] = useState(!!parseInt(cookies[Cookies.Theme]));
+  const theme = useSelector((state: AppState) => state.theme);
   const dispatch = useDispatch();
 
   const handleChange = (checked: boolean) => {
     const actionType = ThemeActionType.Set;
     const theme = checked ? Theme.Dark : Theme.Light;
 
-    setChecked((checked) => !checked);
     dispatch({
       type: actionType,
       payload: theme,
     });
+
+    setChecked((checked) => !checked);
+    setCookies(Cookies.Theme, theme);
   };
 
-  return <Switch checked={checked} onChange={handleChange} />;
+  return (
+    <Switch
+      className={"switch"}
+      checked={checked}
+      onChange={handleChange}
+      checkedIcon={Sun}
+      uncheckedIcon={Moon}
+      onColor={theme.colors.secondary}
+      onHandleColor={theme.colors.primary}
+      offColor={theme.colors.secondary}
+      offHandleColor={theme.colors.primary}
+      height={30}
+      width={70}
+      handleDiameter={24}
+    />
+  );
 };
 
 export default ThemeSwitch;
