@@ -1,12 +1,12 @@
 import { Environment } from "./Environment";
 
-export namespace NewsAPI {
+namespace NewsAPI {
   export enum Endpoints {
     everything = "everything",
     topHeadlines = "top-headlines",
   }
 
-  export enum QueryParameterKeys {
+  export enum Keys {
     keywordsEverywhere = "q",
     keywordTitle = "qInTitle",
     language = "language",
@@ -15,10 +15,10 @@ export namespace NewsAPI {
   }
 
   export class QueryParameter {
-    public readonly key: QueryParameterKeys;
+    public readonly key: Keys;
     public value: string;
 
-    constructor(key: QueryParameterKeys, value: string) {
+    constructor(key: Keys, value: string) {
       this.key = key;
       this.value = value;
     }
@@ -32,14 +32,6 @@ export namespace NewsAPI {
     private endpoint: Endpoints = Endpoints.everything;
 
     private queryParameters: Array<QueryParameter> = [];
-
-    private stringifyQueryParameters = () => {
-      return this.queryParameters.reduce((accum, queryParameter, index) => {
-        const isLastElement = index === this.queryParameters.length - 1;
-        const delimeter = isLastElement ? "" : "&";
-        return accum + queryParameter.stringify() + delimeter;
-      }, "");
-    };
 
     public setQueryParameter = (queryParameter: QueryParameter) => {
       const existingQueryParameter = this.queryParameters.find(
@@ -61,7 +53,7 @@ export namespace NewsAPI {
       return this;
     };
 
-    public removeQueryParameter = (key: QueryParameterKeys) => {
+    public removeQueryParameter = (key: Keys) => {
       this.queryParameters = this.queryParameters.filter(
         (queryParameter) => queryParameter.key !== key
       );
@@ -73,5 +65,15 @@ export namespace NewsAPI {
       const apiKeyQueryParameter = `apiKey=${this.apiKey}`;
       return `${this.baseURL}/${this.endpoint}?${apiKeyQueryParameter}&${queryParameters}`;
     };
+
+    private stringifyQueryParameters = () => {
+      return this.queryParameters.reduce((accum, queryParameter, index) => {
+        const isLastElement = index === this.queryParameters.length - 1;
+        const delimeter = isLastElement ? "" : "&";
+        return accum + queryParameter.stringify() + delimeter;
+      }, "");
+    };
   }
 }
+
+export default NewsAPI;
