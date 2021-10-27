@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { Article } from "../../types";
+import React from "react";
 import {
   Container,
   ImageWrapper,
@@ -9,12 +8,13 @@ import {
   Description,
 } from "./ArticleCard.style";
 import { beautifyDescription } from "./ArticleCard.utils";
+import { Article } from "../../../types/NewsAPI";
 
 type ArticleCardProps = {
   article: Article;
 };
 
-const ArticleCard: FC<ArticleCardProps> = ({ article }: ArticleCardProps) => {
+const ArticleCard = ({ article }: ArticleCardProps) => {
   const {
     source: { name },
     title,
@@ -22,6 +22,8 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }: ArticleCardProps) => {
     url,
     urlToImage,
   } = article;
+
+  const maxSymbolCount = 120;
 
   return (
     <Container href={url ?? ""}>
@@ -35,7 +37,9 @@ const ArticleCard: FC<ArticleCardProps> = ({ article }: ArticleCardProps) => {
         />
       </ImageWrapper>
       <Title>{title}</Title>
-      <Description>{beautifyDescription(description, 120)}</Description>
+      <Description>
+        {beautifyDescription(description, maxSymbolCount)}
+      </Description>
       <Footer>{name}</Footer>
     </Container>
   );
