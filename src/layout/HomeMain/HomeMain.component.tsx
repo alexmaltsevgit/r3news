@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Content } from "./HomeMain.styles";
 import { queryParameters } from "./HomeMain.utils";
-import ArticleCard from "../../shared/ArticleCard/ArticleCard.component";
-import useArticles from "../../../hooks/useArticles";
+import ArticleCard from "../../components/ArticleCard/ArticleCard.component";
+import useArticles from "../../hooks/useArticles";
 
 const HomeMain = () => {
   const articles = useArticles(queryParameters);

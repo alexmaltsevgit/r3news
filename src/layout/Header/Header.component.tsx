@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import NavigationBar from "../../shared/NavigationBar/NavigationBar.component";
-import HomeLogo from "../../shared/HomeLogo/HomeLogo.component";
+import NavigationBar from "../../components/NavigationBar/NavigationBar.component";
+import HomeLogo from "../../components/HomeLogo/HomeLogo.component";
 import LayoutContainerCss from "../LayoutContainer/LayoutContainer.style";
-import Search from "../../shared/Search/Search.component";
+import Search from "../../components/Search/Search.component";
 
 const Container = styled.header`
   ${LayoutContainerCss}

@@ -8,7 +8,7 @@ import {
   Description,
 } from "./ArticleCard.style";
 import { beautifyDescription } from "./ArticleCard.utils";
-import { Article } from "../../../types/NewsAPI";
+import { Article } from "../../types/NewsAPI";
 
 type ArticleCardProps = {
   article: Article;

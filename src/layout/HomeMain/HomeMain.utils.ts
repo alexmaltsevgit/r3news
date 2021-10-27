@@ -1,4 +1,4 @@
-import NewsAPI from "../../../utils/NewsAPI";
+import NewsAPI from "../../utils/NewsAPI";
 
 const createQueryParameter = (key: NewsAPI.Keys, value: string) =>
   new NewsAPI.QueryParameter(key, value);

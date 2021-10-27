@@ -1,5 +1,5 @@
 import React from "react";
-import SignUpMain from "../components/layout/SignUpMain/SingUpMain.component";
+import SignUpMain from "../layout/SignUpMain/SingUpMain.component";
 
 const SignUp = () => {
   return <SignUpMain />;
