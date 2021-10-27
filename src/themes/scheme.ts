@@ -1,5 +1,11 @@
 type ThemeScheme = {
-  colors: {};
+  colors: {
+    primary: string;
+    text: string;
+    blue: string;
+    red: string;
+    green: string;
+  };
 };
 
 export default ThemeScheme;

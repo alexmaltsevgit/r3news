@@ -1,13 +1,20 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Route, Switch } from "react-router";
 import Home from "./pages/Home";
 import Header from "./layout/Header/Header.component";
 import SignUp from "./pages/SignUp";
 import Searched from "./pages/Searched";
+import { useSelector } from "react-redux";
+import { AppState } from "./types/AppState";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./App.style";
 
 function App() {
+  const theme = useSelector((state: AppState) => state.theme);
+
   return (
-    <Fragment>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Header />
       <Switch>
         <Route exact path={"/"}>
@@ -22,7 +29,7 @@ function App() {
           <SignUp />
         </Route>
       </Switch>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 
