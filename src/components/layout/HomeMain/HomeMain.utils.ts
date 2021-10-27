@@ -1,9 +1,9 @@
-import { NewsAPI } from "../../../utils/NewsAPI.query";
+import NewsAPI from "../../../utils/NewsAPI";
 
-const createQueryParameter = (key: NewsAPI.QueryParameterKeys, value: string) =>
+const createQueryParameter = (key: NewsAPI.Keys, value: string) =>
   new NewsAPI.QueryParameter(key, value);
 
 export const queryParameters = [
-  createQueryParameter(NewsAPI.QueryParameterKeys.keywordsEverywhere, "cars"),
-  createQueryParameter(NewsAPI.QueryParameterKeys.language, "ru"),
+  createQueryParameter(NewsAPI.Keys.keywordsEverywhere, "cars"),
+  createQueryParameter(NewsAPI.Keys.language, "ru"),
 ];
