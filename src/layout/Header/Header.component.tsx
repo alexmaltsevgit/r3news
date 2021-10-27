@@ -4,6 +4,7 @@ import NavigationBar from "../../components/NavigationBar/NavigationBar.componen
 import HomeLogo from "../../components/HomeLogo/HomeLogo.component";
 import LayoutContainerCss from "../LayoutContainer/LayoutContainer.style";
 import Search from "../../components/Search/Search.component";
+import ThemeSwitch from "../../components/ThemeSwitch/ThemeSwitch.component";
 
 const Container = styled.header`
   ${LayoutContainerCss}
@@ -23,6 +24,7 @@ const Header = () => {
       <Content>
         <HomeLogo />
         <Search />
+        <ThemeSwitch />
         <NavigationBar />
       </Content>
     </Container>
