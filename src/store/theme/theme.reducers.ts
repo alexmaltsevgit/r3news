@@ -14,14 +14,10 @@ const getTheme = (theme: Theme) => {
   }
 };
 
-export const themeReducer = (state = { theme: light }, action: ThemeAction) => {
+export const themeReducer = (state = light, action: ThemeAction) => {
   switch (action.type) {
     case ThemeActionType.Set:
-      const theme = getTheme(action.payload as Theme);
-      return {
-        ...state,
-        theme,
-      };
+      return getTheme(action.payload as Theme);
     default:
       return state;
   }

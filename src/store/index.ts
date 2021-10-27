@@ -1,9 +1,16 @@
-import { createStore, applyMiddleware } from "redux";
-import rootReducer from "./root-reducer";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger";
+import { themeReducer } from "./theme/theme.reducers";
+import light from "../themes/light";
 
-const middlewares = [logger];
-
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
+const store = configureStore({
+  reducer: {
+    theme: themeReducer,
+  },
+  middleware: [logger],
+  preloadedState: {
+    theme: light,
+  },
+});
 
 export default store;
