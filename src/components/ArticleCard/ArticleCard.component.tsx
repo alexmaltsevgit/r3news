@@ -9,12 +9,15 @@ import {
 } from "./ArticleCard.style";
 import { beautifyDescription } from "./ArticleCard.utils";
 import { Article } from "../../types/NewsAPI";
+import { ThemeProvider, useTheme } from "styled-components";
 
 type ArticleCardProps = {
   article: Article;
+  small?: boolean;
 };
 
-const ArticleCard = ({ article }: ArticleCardProps) => {
+const ArticleCard = ({ article, small = false }: ArticleCardProps) => {
+  useTheme();
   const {
     source: { name },
     title,
@@ -26,22 +29,24 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
   const maxSymbolCount = 120;
 
   return (
-    <Container href={url ?? ""}>
-      <ImageWrapper>
-        <Image
-          lazy-load
-          src={
-            urlToImage ??
-            "https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png"
-          }
-        />
-      </ImageWrapper>
-      <Title>{title}</Title>
-      <Description>
-        {beautifyDescription(description, maxSymbolCount)}
-      </Description>
-      <Footer>{name}</Footer>
-    </Container>
+    <ThemeProvider theme={{ small }}>
+      <Container href={url || ""}>
+        <ImageWrapper>
+          <Image
+            loading={"lazy"}
+            src={
+              urlToImage ||
+              "https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png"
+            }
+          />
+        </ImageWrapper>
+        <Title>{title}</Title>
+        <Description>
+          {beautifyDescription(description, maxSymbolCount)}
+        </Description>
+        <Footer>{name}</Footer>
+      </Container>
+    </ThemeProvider>
   );
 };
 
