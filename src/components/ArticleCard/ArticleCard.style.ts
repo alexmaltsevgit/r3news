@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { darken } from "polished";
+import { darken, mix, readableColor } from "polished";
 
 export const Container = styled.a`
   display: flex;
@@ -15,7 +15,14 @@ export const Container = styled.a`
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.blue};
-    background-color: ${({ theme }) => darken(0.58, theme.colors.blue)};
+    // yeah that's cringe
+    background-color: ${({ theme }) =>
+      readableColor(
+        theme.colors.primary,
+        mix(0.95, theme.colors.primary, theme.colors.blue),
+        darken(0.58, theme.colors.blue),
+        false
+      )};
   }
 `;
 
