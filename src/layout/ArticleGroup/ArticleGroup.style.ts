@@ -12,9 +12,13 @@ export const Container = styled.div`
     `3px solid ${mix(0.8, theme.colors.primary, "gray")}`};
 `;
 
+export const Content = styled.div`
+  height: 350px;
+`;
+
 export const Title = styled.h2``;
 
 export const Slider = styled(Swiper)`
-  height: 350px;
+  height: 100%;
   margin: 30px -15px;
 `;

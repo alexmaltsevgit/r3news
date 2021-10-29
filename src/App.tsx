@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router";
 import Home from "./pages/Home";
 import Header from "./layout/Header/Header.component";
 import SignUp from "./pages/SignUp";
-import Searched from "./pages/Searched";
 import { useSelector } from "react-redux";
 import { AppState } from "./types/AppState";
 import { ThemeProvider } from "styled-components";
@@ -20,10 +19,6 @@ function App() {
       <Switch>
         <Route exact path={"/"}>
           <Home />
-        </Route>
-
-        <Route exact path={"/search/:query"}>
-          <Searched />
         </Route>
 
         <Route exact path={"/sign-up"}>

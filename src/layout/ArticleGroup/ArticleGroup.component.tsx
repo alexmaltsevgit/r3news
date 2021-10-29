@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Title, Slider } from "./ArticleGroup.style";
+import { Container, Title, Slider, Content } from "./ArticleGroup.style";
 import Loadable from "../Loadable/Loadable.component";
 import useArticles from "../../hooks/useArticles";
 import { queryParameters } from "../HomeMain/HomeMain.utils";
@@ -12,15 +12,17 @@ const ArticleGroup = () => {
   return (
     <Container>
       <Title>Категория</Title>
-      <Loadable isLoading={false}>
-        <Slider slidesPerView={3} spaceBetween={20}>
-          {articles?.map((article) => (
-            <SwiperSlide key={article.url}>
-              <ArticleCard small={true} article={article} />
-            </SwiperSlide>
-          ))}
-        </Slider>
-      </Loadable>
+      <Content>
+        <Loadable isLoading={!articles}>
+          <Slider slidesPerView={3} spaceBetween={20}>
+            {articles?.map((article) => (
+              <SwiperSlide key={article.url}>
+                <ArticleCard small={true} article={article} />
+              </SwiperSlide>
+            ))}
+          </Slider>
+        </Loadable>
+      </Content>
     </Container>
   );
 };

@@ -27,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
   
+  main {
+    padding-top: 150px;
+  }
+  
   h2 {
     font-size: 2rem;
     font-weight: 600;
