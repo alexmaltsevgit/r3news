@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import ThemeScheme from "./themes/scheme";
-import { normalize } from "polished";
+import { mix, normalize } from "polished";
 
 type GlobalStyleProps = {
   theme: ThemeScheme;
@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   *,
   *::before,
   *::after {
+    margin: 0;
     box-sizing: border-box;
     transition: background-color .2s linear;
   }
@@ -28,7 +29,13 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   main {
-    padding-top: 150px;
+    padding-top: 150px !important;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0;
   }
   
   h2 {
@@ -41,15 +48,28 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 500;
   }
   
-  .switch {
-    svg {
-      width: 70%;
-      height: 70%;
-      margin: auto;
-    }
+  form {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  input {
+    width: 100%;
     
-    .react-switch-bg > div {
-      display: flex;
+    border: 2px solid ${({ theme }) => mix(0.5, theme.colors.primary, "gray")};
+    border-radius: 4px;
+    
+    color: #000;
+    
+    transition: all .2s linear;
+    
+    &:focus {
+      outline: none;
+      border: 2px solid ${({ theme }) => theme.colors.blue};
     }
+  }
+  
+  input[type="submit"] {
+    cursor: pointer;
   }
 `;

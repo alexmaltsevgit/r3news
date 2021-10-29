@@ -6,3 +6,5 @@ export const Container = styled.main`
   flex: 1;
   padding-top: 150px;
 `;
+
+export const Title = styled.h1``;

@@ -14,6 +14,8 @@ export const Container = styled.a`
 
   transition: border-color 0.2s linear, background-color 0.2s linear;
 
+  user-select: none;
+
   height: ${({ theme }) => (theme.small ? "350px" : "500px")};
 
   &:hover {
