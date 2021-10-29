@@ -1,11 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 import ThemeScheme from "./themes/scheme";
+import { normalize } from "polished";
 
 type GlobalStyleProps = {
   theme: ThemeScheme;
 };
 
 export const GlobalStyle = createGlobalStyle`
+  ${normalize()}
+  
   *,
   *::before,
   *::after {
@@ -16,6 +19,12 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }: GlobalStyleProps) => theme.colors.primary};
     color: ${({ theme }: GlobalStyleProps) => theme.colors.secondary};
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
   
   .switch {

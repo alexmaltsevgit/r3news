@@ -3,6 +3,9 @@ import LayoutContainerCss from "../LayoutContainer/LayoutContainer.style";
 
 export const Container = styled.main`
   ${LayoutContainerCss};
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding-top: 100px;
 `;
 
