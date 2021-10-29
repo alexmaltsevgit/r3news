@@ -2,16 +2,16 @@ import { Environment } from "./Environment";
 
 namespace NewsAPI {
   export enum Endpoints {
-    everything = "everything",
-    topHeadlines = "top-headlines",
+    Everything = "Everything",
+    TopHeadlines = "top-headlines",
   }
 
   export enum Keys {
-    keywordsEverywhere = "q",
-    keywordTitle = "qInTitle",
-    language = "language",
-    pageSize = "pageSize",
-    page = "page",
+    KeywordsEverywhere = "q",
+    KeywordTitle = "qInTitle",
+    Language = "Language",
+    PageSize = "PageSize",
+    Page = "Page",
   }
 
   export class QueryParameter {
@@ -29,9 +29,25 @@ namespace NewsAPI {
   export class QueryBuilder {
     private apiKey: string = Environment.getNewsAPIKey();
     private baseURL: string = "https://newsapi.org/v2";
-    private endpoint: Endpoints = Endpoints.everything;
+    private endpoint: Endpoints = Endpoints.Everything;
 
     private queryParameters: Array<QueryParameter> = [];
+
+    public setKeyword = (keyword: string) => {
+      this.setQueryParameter(
+        new QueryParameter(Keys.KeywordsEverywhere, keyword)
+      );
+    };
+
+    public setPageSize = (pageSize: string | number) => {
+      this.setQueryParameter(
+        new QueryParameter(Keys.PageSize, pageSize.toString())
+      );
+    };
+
+    public setPage = (page: string | number) => {
+      this.setQueryParameter(new QueryParameter(Keys.Page, page.toString()));
+    };
 
     public setQueryParameter = (queryParameter: QueryParameter) => {
       const existingQueryParameter = this.queryParameters.find(
