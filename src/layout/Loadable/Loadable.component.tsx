@@ -1,15 +1,15 @@
-import React from "react";
+import React, { ReactNode, ReactNodeArray } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/AppState";
 import { LoaderWrapper } from "./Loadable.style";
 import { ClipLoader } from "react-spinners";
 
 type LoadableProps = {
-  render: JSX.Element | Array<JSX.Element> | undefined;
+  children: ReactNode | ReactNodeArray;
   isLoading: boolean;
 };
 
-const Loadable = ({ render, isLoading }: LoadableProps) => {
+const Loadable = ({ children, isLoading }: LoadableProps) => {
   const theme = useSelector((state: AppState) => state.theme);
   return (
     <>
@@ -22,7 +22,7 @@ const Loadable = ({ render, isLoading }: LoadableProps) => {
           />
         </LoaderWrapper>
       ) : (
-        render
+        children
       )}
     </>
   );
