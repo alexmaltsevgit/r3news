@@ -27,6 +27,16 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
   }
   
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
   .switch {
     svg {
       width: 70%;

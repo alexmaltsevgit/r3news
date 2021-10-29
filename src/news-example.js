@@ -1,4 +1,4 @@
-const JSON_EXAMPLE = {
+const NEWS_EXAMPLE = {
   status: "ok",
   totalResults: 5792,
   articles: [
@@ -322,4 +322,4 @@ const JSON_EXAMPLE = {
   ],
 };
 
-export default JSON_EXAMPLE;
+export default NEWS_EXAMPLE;

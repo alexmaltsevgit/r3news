@@ -6,12 +6,15 @@ export const Container = styled.a`
   flex-direction: column;
 
   padding: 10px 15px 20px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) =>
+    mix(0.97, theme.colors.primary, theme.colors.secondary)};
 
   border: 2px solid transparent;
   border-radius: 5px;
 
   transition: border-color 0.2s linear, background-color 0.2s linear;
+
+  height: ${({ theme }) => (theme.small ? "350px" : "500px")};
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.blue};
@@ -38,11 +41,9 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.h3`
-  font-size: 1.5rem;
-  font-weight: 600;
   letter-spacing: 1px;
   line-height: 1.1em;
-  margin-bottom: ${({ theme }) => (theme.small ? "0.5em" : "1.5em")};
+  margin-bottom: 1em;
 `;
 
 export const Description = styled.p`

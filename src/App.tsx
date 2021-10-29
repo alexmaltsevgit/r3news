@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "./types/AppState";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./App.style";
+import "swiper/swiper.min.css";
 
 function App() {
   const theme = useSelector((state: AppState) => state.theme);

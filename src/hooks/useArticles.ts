@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Article, NewsAPIResponse } from "../types/NewsAPI";
-import JSON_EXAMPLE from "../json-example";
+import NEWS_EXAMPLE from "../news-example";
 import NewsAPI from "../utils/NewsAPI";
 import { Environment } from "../utils/Environment";
 import QueryParameter = NewsAPI.QueryParameter;
 
 const useArticles = (queryParameters: Array<QueryParameter>) => {
-  const [articles, setNews] = useState<Array<Article>>([]);
+  const [articles, setNews] = useState<Array<Article> | null>(null);
 
   const fetchArticles = async (url: string) => {
     try {
@@ -19,9 +19,10 @@ const useArticles = (queryParameters: Array<QueryParameter>) => {
     }
   };
 
-  const fetchFake = () => {
+  const fetchFake = async () => {
+    await new Promise((res) => setTimeout(res, 2000));
     // @ts-ignore
-    setNews(JSON_EXAMPLE.articles);
+    setNews(NEWS_EXAMPLE.articles);
   };
 
   useEffect(() => {
