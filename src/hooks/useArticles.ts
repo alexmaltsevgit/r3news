@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Article, NewsAPIResponse } from "../types/NewsAPI";
 import NEWS_EXAMPLE from "../news-example";
 import NewsAPI from "../utils/NewsAPI";
-import { Environment } from "../utils/Environment";
 import QueryParameter = NewsAPI.QueryParameter;
 
 const useArticles = (queryParameters: Array<QueryParameter>) => {
@@ -30,7 +29,8 @@ const useArticles = (queryParameters: Array<QueryParameter>) => {
     queryBuilder.setQueryParameters(queryParameters);
     const url = queryBuilder.getUrl();
 
-    Environment.isDebug() ? fetchFake() : fetchArticles(url);
+    // Environment.isDebug() ? fetchFake() : fetchArticles(url);
+    fetchFake();
   }, [queryParameters]);
 
   return articles;
