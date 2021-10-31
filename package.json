@@ -64,5 +64,6 @@
     "postcss": "^7.0.36",
     "tailwind-styled-components": "^2.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
-  }
+  },
+  "homepage": "."
 }
