@@ -6,7 +6,7 @@ export enum ThemeActionType {
 
 export type ThemeAction = {
   type: ThemeActionType;
-  payload?: Theme; // expand type if needed
+  payload?: Theme;
 };
 
 export const setTheme = (theme: Theme): ThemeAction => ({

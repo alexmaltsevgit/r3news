@@ -1,4 +1,7 @@
-import { Cookies } from "../../types/Cookies";
+import { Cookies } from "../types/Cookies";
+
+// actually 2147483647 = 2^31 - 1
+export const cookiesMaxExpirationDate = new Date(2147483647 * 1000);
 
 export const getCookie = (name: Cookies) => {
   const nameLenPlus = name.length + 1;

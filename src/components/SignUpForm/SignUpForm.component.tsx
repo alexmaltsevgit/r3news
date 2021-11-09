@@ -11,6 +11,7 @@ type SignUpFormData = {
 const SignUpForm = () => {
   const { register, handleSubmit } = useForm<SignUpFormData>();
 
+  // TODO: register base logic
   const onSubmit = (data: SignUpFormData) => {
     console.log(data);
   };
@@ -19,18 +20,14 @@ const SignUpForm = () => {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <label>
         <span>Логин</span>
-        <input
-          type="text"
-          placeholder={"pussydestroyer3000"}
-          {...register("login")}
-        />
+        <input type="text" placeholder={"Логин"} {...register("login")} />
       </label>
 
       <label>
         <span>Пароль</span>
         <input
           type="password"
-          placeholder={"**************"}
+          placeholder={"Пароль"}
           {...register("password")}
         />
       </label>
@@ -39,7 +36,7 @@ const SignUpForm = () => {
         <span>Email</span>
         <input
           type="text"
-          placeholder={"nagibator228@cringe.com"}
+          placeholder={"example@gmail.com"}
           {...register("email")}
         />
       </label>

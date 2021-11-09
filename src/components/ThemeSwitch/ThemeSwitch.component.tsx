@@ -8,6 +8,7 @@ import { Sun } from "../../assets/images/Sun";
 import { Moon } from "../../assets/images/Moon";
 import { AppState } from "../../types/AppState";
 import { StyledSwitch } from "./ThemeSwitch.style";
+import { cookiesMaxExpirationDate } from "../../utils/cookies";
 
 const ThemeSwitch = () => {
   const [cookies, setCookies] = useCookies([Cookies.Theme]);
@@ -25,7 +26,9 @@ const ThemeSwitch = () => {
     });
 
     setChecked((checked) => !checked);
-    setCookies(Cookies.Theme, theme);
+    setCookies(Cookies.Theme, theme, {
+      expires: cookiesMaxExpirationDate,
+    });
   };
 
   return (

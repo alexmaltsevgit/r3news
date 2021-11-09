@@ -2,7 +2,7 @@ import { ThemeAction, ThemeActionType } from "./theme.actions";
 import light from "../../themes/light";
 import dark from "../../themes/dark";
 import Theme from "../../types/Theme";
-import { getCookie } from "../utils/cookies";
+import { getCookie } from "../../utils/cookies";
 import { Cookies } from "../../types/Cookies";
 
 const getThemeScheme = (theme: Theme | null) => {
